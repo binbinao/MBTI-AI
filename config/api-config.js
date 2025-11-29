@@ -1,48 +1,45 @@
-// API Configuration for Tencent Cloud AI Integration
-const APIConfig = {
-    // Default API settings - these will be overridden by environment variables if available
-    baseURL: 'https://api.tencentcloudapi.com',
-    timeout: 30000, // 30 seconds timeout
-    headers: {
-        'Content-Type': 'application/json',
-        'User-Agent': 'MBTI-Test-App/1.0'
-    },
-    
-    // API endpoints
-    endpoints: {
-        aiAnalysis: '/nlp/text-ai-analysis',
-        // Add other endpoints as needed
-    },
-    
-    // Get API settings from environment or use defaults
-    getSettings: function() {
-        // In a real environment, these would come from environment variables
-        // For browser environments, we might need a different approach
-        return {
-            secretId: this.getEnvVariable('TENCENT_SECRET_ID', ''),
-            secretKey: this.getEnvVariable('TENCENT_SECRET_KEY', ''), 
-            region: this.getEnvVariable('TENCENT_REGION', 'ap-beijing'),
-            service: this.getEnvVariable('TENCENT_SERVICE', 'nlp'),
-            version: this.getEnvVariable('TENCENT_VERSION', '2019-04-11'),
-            timeout: this.timeout,
-            headers: { ...this.headers }
-        };
-    },
-    
-    // Helper function to get environment variable (adapted for browser environment)
-    getEnvVariable: function(key, defaultValue) {
-        // In browser environments, we typically don't have environment variables
-        // This implementation looks for variables in the window object or returns default
-        if (typeof window !== 'undefined' && window[key]) {
-            return window[key];
+// API配置文件
+const API_CONFIG = {
+    // 根据环境自动判断API基础URL
+    get BASE_URL() {
+        if (typeof window !== 'undefined') {
+            // 浏览器环境
+            const isDevelopment = window.location.hostname === 'localhost' || 
+                                 window.location.hostname === '127.0.0.1';
+            
+            if (isDevelopment) {
+                return 'http://localhost:3000'; // 本地开发环境
+            } else {
+                return ''; // Vercel生产环境，使用相对路径
+            }
+        } else {
+            // Node.js环境
+            return process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3000';
         }
-        return defaultValue;
+    },
+
+    // API端点
+    ENDPOINTS: {
+        LKEAP: '/api/lkeap',
+        HEALTH: '/api/health'
+    },
+
+    // 获取完整的API URL
+    getApiUrl(endpoint) {
+        return `${this.BASE_URL}${endpoint}`;
+    },
+
+    // 请求配置
+    REQUEST_CONFIG: {
+        timeout: 30000, // 30秒超时
+        retries: 3,     // 重试次数
+        retryDelay: 1000 // 重试延迟(毫秒)
     }
 };
 
-// Export for browser or module use
+// 导出配置
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = APIConfig;
-} else if (typeof window !== 'undefined') {
-    window.APIConfig = APIConfig;
+    module.exports = API_CONFIG;
+} else {
+    window.API_CONFIG = API_CONFIG;
 }

@@ -463,7 +463,8 @@ async function analyzeWithAI(mbtiType) {
         };
 
         // 调用后端代理API
-        const response = await fetch('http://localhost:3000/api/lkeap', {
+        const apiUrl = API_CONFIG.getApiUrl(API_CONFIG.ENDPOINTS.LKEAP);
+        const response = await fetch(apiUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

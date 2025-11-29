@@ -1,34 +1,31 @@
 {
-  "name": "mbti-lkeap-ai-proxy",
+  "name": "mbti-ai-server",
   "version": "1.0.0",
-  "description": "Backend proxy for Lkeap AI API integration with DeepSeek models",
-  "main": "api-proxy.js",
+  "description": "MBTI AI Test Backend Server",
+  "main": "api/lkeap.js",
   "scripts": {
-    "start": "node api-proxy.js",
-    "dev": "nodemon api-proxy.js",
-    "debug": "node debug.js",
-    "test": "node test.js",
-    "debug:check-env": "node -e \"require('dotenv').config(); console.log('LKEAP_API_KEY set:', !!process.env.LKEAP_API_KEY); console.log('LKEAP_BASE_URL:', process.env.LKEAP_BASE_URL || 'default'); console.log('LKEAP_DEFAULT_MODEL:', process.env.LKEAP_DEFAULT_MODEL || 'default');\"",
-    "debug:test-api": "node -e \"require('./debug').testDirectLkeapAPI().then(result => console.log('Test result:', result));\"",
-    "debug:test-proxy": "node -e \"require('./debug').testProxyServer().then(result => console.log('Test result:', result));\""
+    "start": "node api/lkeap.js",
+    "dev": "nodemon api/lkeap.js",
+    "build": "echo 'Build completed'",
+    "test": "node test.js"
   },
   "dependencies": {
     "express": "^4.18.2",
-    "axios": "^1.6.0",
-    "dotenv": "^16.3.1"
+    "cors": "^2.8.5",
+    "node-fetch": "^2.7.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
   },
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "keywords": [
-    "lkeap",
-    "deepseek",
-    "ai",
-    "api",
-    "proxy",
     "mbti",
-    "personality-test"
+    "ai",
+    "personality-test",
+    "tencent-cloud"
   ],
-  "author": "MBTI Personality Test",
-  "license": "Apache License 2.0"
+  "author": "binbinao",
+  "license": "MIT"
 }
