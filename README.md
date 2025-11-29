@@ -3,14 +3,7 @@ frameworks:
 - Pytorch
 license: Apache License 2.0
 ---
-# AlexNet & MBTI Personality Test
-
-This repository contains two distinct components:
-
-## AlexNet Component
-- **Model File**: `alexnet-owt-7be5be79.pth` - A pre-trained AlexNet model
-- **Original Purpose**: Part of the synctalk project
-- **Framework**: PyTorch
+# AI & MBTI Personality Test
 
 ## MBTI Personality Test Component
 A web-based MBTI personality assessment interface that includes:
@@ -28,7 +21,7 @@ To use the MBTI test, simply open `index.html` in your browser.
 
 The application includes integration with Lkeap API services for personality analysis using DeepSeek models. To configure the API:
 
-1. Copy `.env.example` to `.env` in the root directory and add your Lkeap API key
+1. Copy `.env.example` to `.env` in the root directory and add your Tencent Lkeap API key
 2. Navigate to the `server` directory and install dependencies: `npm install`
 3. Start the backend proxy server: `npm start` (or `npm run dev` for development with auto-restart)
 4. Keep the backend server running while using the frontend application
@@ -43,7 +36,6 @@ The application includes integration with Lkeap API services for personality ana
 - `config/api-config.js` - API configuration management
 - `services/lkeap-ai-service.js` - Lkeap AI service implementation
 - `server/api-proxy.js` - Backend proxy for Lkeap API
-- `alexnet-owt-7be5be79.pth` - Pre-trained AlexNet model
 - `configuration.json` - Framework configuration
 - `STARTUP_LESSON.md` - Documentation
 - `.env.example` - Environment variables template
