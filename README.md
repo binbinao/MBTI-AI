@@ -3,17 +3,48 @@ frameworks:
 - Pytorch
 license: Apache License 2.0
 ---
-###### 模型文件和权重，请浏览“模型文件”页面获取。
-###### 您可以通过如下git clone命令，或者ModelScope SDK来下载模型。
-###### 通过ModelScope的SDK来下载模型
-```python
-#模型下载
-from modelscope import snapshot_download
-model_dir = snapshot_download('AI-ModelScope/alexnet')
-```
+# AlexNet & MBTI Personality Test
 
-###### Clone with HTTP
-```
-git clone https://www.modelscope.cn/AI-ModelScope/alexnet.git
-```
-该模型主要for synctalk
+This repository contains two distinct components:
+
+## AlexNet Component
+- **Model File**: `alexnet-owt-7be5be79.pth` - A pre-trained AlexNet model
+- **Original Purpose**: Part of the synctalk project
+- **Framework**: PyTorch
+
+## MBTI Personality Test Component
+A web-based MBTI personality assessment interface that includes:
+- Modern, responsive UI with gradient design
+- Three test modes (Short: 8 questions, Standard: 28 questions, Extended: 100+ questions)
+- Accessibility features and semantic HTML
+- Error handling and validation
+- Responsive design for all device sizes
+- Integration with Tencent Cloud AI for personality analysis
+
+### Usage
+To use the MBTI test, simply open `index.html` in your browser.
+
+### API Integration (Lkeap with DeepSeek Models)
+
+The application includes integration with Lkeap API services for personality analysis using DeepSeek models. To configure the API:
+
+1. Copy `.env.example` to `.env` in the root directory and add your Lkeap API key
+2. Navigate to the `server` directory and install dependencies: `npm install`
+3. Start the backend proxy server: `npm start` (or `npm run dev` for development with auto-restart)
+4. Keep the backend server running while using the frontend application
+5. The API configuration is managed in `config/api-config.js`
+6. The service implementation is in `services/lkeap-ai-service.js`
+7. Default model is set to `deepseek-v3-0324`
+
+### Project Structure
+- `index.html` - Main HTML interface with accessibility features
+- `script.js` - JavaScript logic with error handling and validation
+- `styles.css` - Responsive styles with modern UI elements
+- `config/api-config.js` - API configuration management
+- `services/lkeap-ai-service.js` - Lkeap AI service implementation
+- `server/api-proxy.js` - Backend proxy for Lkeap API
+- `alexnet-owt-7be5be79.pth` - Pre-trained AlexNet model
+- `configuration.json` - Framework configuration
+- `STARTUP_LESSON.md` - Documentation
+- `.env.example` - Environment variables template
+- `.gitignore` - Files to ignore during git commits

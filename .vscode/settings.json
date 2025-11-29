@@ -1,0 +1,12 @@
+{
+  "debug.node.autoAttach": "off",
+  "debug.javascript.autoAttachFilter": "disabled",
+  "terminal.integrated.env": {
+    "NODE_ENV": "development"
+  },
+  "files.associations": {
+    "*.js": "javascript"
+  },
+  "javascript.validate.enable": false,
+  "codingcopilot.autoRun": true
+}

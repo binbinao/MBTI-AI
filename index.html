@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="全新MBTI性格测试 - 了解你的性格类型和特质">
+    <title>全新MBTI性格测试</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="container" role="main">
+        <header>
+            <h1>全新MBTI性格测试</h1>
+            <p class="subtitle">通过简短的测试了解您的性格类型和特质</p>
+        </header>
+
+        <section class="mode-selection" role="region" aria-labelledby="testModeHeading">
+            <h2 id="testModeHeading">选择测试模式</h2>
+            <button type="button" id="shortTest" aria-describedby="shortTestDesc">最短测试 (8题)</button>
+            <button type="button" id="standardTest" aria-describedby="standardTestDesc">标准测试 (28题)</button>
+            <button type="button" id="extendedTest" aria-describedby="extendedTestDesc">扩展测试 (100+题)</button>
+
+            <div class="test-descriptions hidden">
+                <p id="shortTestDesc">快速了解基本性格倾向</p>
+                <p id="standardTestDesc">全面评估四个维度的性格特征</p>
+                <p id="extendedTestDesc">深度分析性格类型和行为模式</p>
+            </div>
+        </section>
+
+        <section id="testArea" class="hidden" role="region" aria-labelledby="testHeading" aria-live="polite">
+            <h2 id="testHeading" class="sr-only">性格测试</h2>
+            <div id="question" aria-live="polite" aria-atomic="true" data-question-number=""></div>
+
+            <fieldset class="answer-options">
+                <legend class="sr-only">选择您的答案</legend>
+                <div class="radio-option">
+                    <input type="radio" id="answer1" name="answer" value="1" aria-label="完全不同意">
+                    <label for="answer1">完全不同意</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="answer2" name="answer" value="2" aria-label="不同意">
+                    <label for="answer2">不同意</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="answer3" name="answer" value="3" aria-label="中立">
+                    <label for="answer3">中立</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="answer4" name="answer" value="4" aria-label="同意">
+                    <label for="answer4">同意</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="answer5" name="answer" value="5" aria-label="完全同意">
+                    <label for="answer5">完全同意</label>
+                </div>
+            </fieldset>
+
+            <div class="navigation" role="navigation" aria-label="测试导航">
+                <button type="button" id="prevQuestion" aria-label="上一题">上一题</button>
+                <span id="progress" aria-live="polite">1/8</span>
+                <button type="button" id="nextQuestion" aria-label="下一题">下一题</button>
+            </div>
+        </section>
+
+        <section id="resultArea" class="hidden" role="region" aria-labelledby="resultHeading" aria-live="polite">
+            <h2 id="resultHeading">测试结果</h2>
+            <p id="mbtiType" class="result-type" aria-live="polite"></p>
+            <div id="aiAnalysis" aria-live="polite"></div>
+        </section>
+    </main>
+
+    <script src="config/api-config.js"></script>
+    <script src="services/lkeap-ai-service.js"></script>
+    <script src="script.js"></script>
+
+    <!-- Screen reader only styles -->
+    <style>
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</body>
+</html>

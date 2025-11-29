@@ -1,1 +1,12 @@
-{"framework":"Pytorch"}
+{
+  "framework": "Pytorch",
+  "projectType": "MBTI-Personality-Test",
+  "version": "1.0.0",
+  "optimized": true,
+  "features": [
+    "Accessibility",
+    "Responsive-Design",
+    "Error-Handling",
+    "Validation"
+  ]
+}
